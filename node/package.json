@@ -1,0 +1,19 @@
+{
+  "name": "tc16",
+  "version": "1.0.0",
+  "description": "tbd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tableau",
+  "license": "MIT",
+  "preferGlobal": "true",
+  "directories": {
+    "bin": "./bin"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "openurl": "^1.1.1"
+  }
+}
