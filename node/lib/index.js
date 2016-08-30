@@ -1,6 +1,7 @@
 var openurl = require('openurl');
 var program = require('commander');
 var fs = require('fs');
+var shelljs = require('shelljs/global');
 
 
 /*
@@ -17,7 +18,7 @@ function openDataDevURL() {
 function drinkMe() {
     fs.readFile('../shared/drinkme.txt', 'utf8', function(err, data) {
         if (err) throw err;
-        
+
         console.log('\n' + data);
     });
 }
@@ -33,7 +34,31 @@ function getTCContent() {
  * Downloads and installs the JS API and WDC SDK
  */
 function getJSTools() {
-    console.log("Coming Soon!");
+    if (!which("git")) {
+        console.log("Sorry, this script requires git");
+        exit(1);
+    }
+
+    cloneRepo("https://github.com/tableau/webdataconnector",
+              "webdataconnector",
+              "http://tableau.github.io/webdataconnector/docs/");
+    cloneRepo("https://github.com/tableau/js-api-examples",
+              "js-api-examples",
+              "https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api.htm");
+}
+
+/*
+ * Helper function that clones a repository from gitHub and opens the docs for it.
+ */ 
+function cloneRepo(repoURL, repoName, docsURL) {
+    console.log("----------" + repoName + "----------");
+    if (exec("git clone " + repoURL).code !== 0) {
+        console.log("Couldn\'t clone " + repoName + " repository.  Check if you already have it.");
+        exit(1);
+    }
+
+    console.log("Cloned the " + repoName + " repository, check out the docs to get started.\n")
+    openurl.open(docsURL);
 }
 
 /*
