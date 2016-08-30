@@ -15,10 +15,9 @@ function openDataDevURL() {
  * Umm, who put this here? 
  */ 
 function drinkMe() {
-
     fs.readFile('../shared/drinkme.txt', 'utf8', function(err, data) {
         if (err) throw err;
-
+        
         console.log('\n' + data);
     });
 }
@@ -49,7 +48,7 @@ function printHeader() {
         console.log("tools and content. There are also Python tools available via pip: ");
         console.log("'pip install tableau'. More can be found at http://developers.tableau.com.");
         
-        console.log("Run tableau -h for more information.\n");
+        console.log("Run tc16 -h for more information.\n");
     });    
 }
 

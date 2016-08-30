@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Tableau",
-  "license": "MIT",
+  "author": "Brendan Lee",
+  "license": "ISC",
   "preferGlobal": "true",
   "directories": {
     "bin": "./bin"

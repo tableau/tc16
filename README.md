@@ -5,6 +5,6 @@ Python:
 
 Node:
 * Ensure you have node and npm installed.
-* Clone repo.
-* Run npm install -g ./ to install.
+* cd into node folder.
+* Run 'npm install -g ./' to install.
 * Run tc16 -h for options.
