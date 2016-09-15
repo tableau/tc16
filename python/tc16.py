@@ -1,5 +1,6 @@
 import argparse
 import webbrowser
+import sys
 
 class TC16Action(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -46,4 +47,8 @@ parser.add_argument('-tc16', nargs=0, action=TC16Action, help='copies all develo
 parser.add_argument('-drinkme', nargs=0, action=DrinkMeAction, help='who knows what this does or where it might lead you. don\'t delay.')
 parser.add_argument('-tools', nargs=0, action=ToolsAction, help='installs all Tableau tools for Python')
 parser.add_argument('-datadev', nargs=0, action=DatadevAction, help='launches http://developers.tableau.com in you browser')
-args = parser.parse_args()
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    if len(sys.argv[1:]) < 1:
+        parser.print_help()
