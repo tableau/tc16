@@ -21,8 +21,14 @@ class DrinkMeAction(argparse.Action):
 
 class ToolsAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
-        print("TODO Tools Action")
-        print("This will install tools like Document API, Server API, SDK")
+        import os
+
+        SDK_URL = "https://onlinehelp.tableau.com/current/api/sdk/en-us/help.htm"
+
+        os.system("pip install tableauserverclient")
+        os.system("pip install tableaudocumentapi")
+        print("Go to {} to download the Tableau Extract SDK (Python 2 only)".format(SDK_URL))
+
 
 class DatadevAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
