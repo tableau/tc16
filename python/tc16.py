@@ -4,8 +4,7 @@ import sys
 
 class TC16Action(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
-        print("TODO TC16 Action")
-        print("This will open a link to a public Dropbox folder with TC16 developer track content")
+        webbrowser.open_new("http://tabsoft.co/tc16DataDevPIP")
 
 class DrinkMeAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -49,10 +48,10 @@ prog_description += "'npm i -g tableau'. More can be found at http://developers.
 parser = argparse.ArgumentParser(description=prog_description, formatter_class=argparse.RawTextHelpFormatter)
 
 # define our commands
-parser.add_argument('-tc16', nargs=0, action=TC16Action, help='copies all developer track content for Tableau Conference 2016')
 parser.add_argument('-drinkme', nargs=0, action=DrinkMeAction, help='who knows what this does or where it might lead you. don\'t delay.')
+parser.add_argument('-datadev', nargs=0, action=DatadevAction, help='launches tableau developer documentation in you browser')
+parser.add_argument('-tc16', nargs=0, action=TC16Action, help='takes you to all developer track content for TC16')
 parser.add_argument('-tools', nargs=0, action=ToolsAction, help='installs all Tableau tools for Python')
-parser.add_argument('-datadev', nargs=0, action=DatadevAction, help='launches http://developers.tableau.com in you browser')
 
 if __name__ == "__main__":
     args = parser.parse_args()

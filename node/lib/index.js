@@ -24,10 +24,10 @@ function drinkMe() {
 }
 
 /*
- * Downloads all relevant TC DevTrack material
+ * Goes to dropbox folder with all relevant TC DevTrack material
  */
 function getTCContent() {
-    console.log("Coming Soon!");
+    openurl.open("http://tabsoft.co/tc16DataDevNPM");
 }
 
 /*
@@ -72,8 +72,8 @@ function printHeader() {
         console.log("tableau is a simple command line interface for downloading Tableau\'s developer ");
         console.log("tools and content. There are also Python tools available via pip: ");
         console.log("'pip install tableau'. More can be found at http://developers.tableau.com.");
-        
-        console.log("Run tc16 -h for more information.\n");
+
+        program.outputHelp();        
     });    
 }
 
@@ -82,9 +82,9 @@ function printHeader() {
 program
   .version('1.0.0')
   .usage('[options]')
-  .option('-d, --datadev', 'launches http://developers.tableau.com in you browser', openDataDevURL)
+  .option('-d, --datadev', 'launches tableau developer documentation in you browser', openDataDevURL)
   .option('-D, --drinkme', 'who knows what this does or where it might lead you. don\'t delay', drinkMe)
-  .option('-t, --tc16', 'copies all developer track content for Tableau Conference 2016', getTCContent)
+  .option('-t, --tc16', 'takes you to all developer track content for TC16', getTCContent)
   .option('-T, --tools', 'installs all Tableau tools for JavaScript', getJSTools)
   .parse(process.argv);
 
