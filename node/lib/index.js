@@ -16,7 +16,7 @@ function openDataDevURL() {
  * Umm, who put this here? 
  */ 
 function drinkMe() {
-    fs.readFile('../shared/drinkme.txt', 'utf8', function(err, data) {
+    fs.readFile('./drinkme.txt', 'utf8', function(err, data) {
         if (err) throw err;
 
         console.log('\n' + data);
@@ -65,7 +65,7 @@ function cloneRepo(repoURL, repoName, docsURL) {
  * Small blurb that prints when user just runs 'tableau' without any options
  */
 function printHeader() {
-    fs.readFile('../shared/tableaulogo.txt', 'utf8', function(err, data) {
+    fs.readFile('./tableaulogo.txt', 'utf8', function(err, data) {
         if (err) throw err;
 
         console.log('\n' + data);

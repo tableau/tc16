@@ -13,7 +13,7 @@ class DrinkMeAction(argparse.Action):
         # 30.265886, -97.735671
         msg = "\n"
 
-        with open('../shared/drinkme.txt', 'r') as f_open:
+        with open('./drinkme.txt', 'r') as f_open:
             msg += f_open.read()
 
         print(msg)
@@ -36,7 +36,7 @@ class DatadevAction(argparse.Action):
 
 prog_description = ""
 
-with open('../shared/tableaulogo.txt','r') as f_open:
+with open('./tableaulogo.txt','r') as f_open:
     prog_description += f_open.read()
 
 
