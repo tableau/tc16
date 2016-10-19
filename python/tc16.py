@@ -1,6 +1,7 @@
 import argparse
 import webbrowser
 import sys
+import os
 
 class TC16Action(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -13,7 +14,9 @@ class DrinkMeAction(argparse.Action):
         # 30.265886, -97.735671
         msg = "\n"
 
-        with open('./drinkme.txt', 'r') as f_open:
+        DRINKME_FILE = os.path.dirname(__file__) +  './shared/drinkme.txt'
+
+        with open(DRINKME_FILE, 'r') as f_open:
             msg += f_open.read()
 
         print(msg)
@@ -36,7 +39,10 @@ class DatadevAction(argparse.Action):
 
 prog_description = ""
 
-with open('./tableaulogo.txt','r') as f_open:
+LOGO_FILE = os.path.dirname(__file__) +  './shared/tableaulogo.txt'
+
+
+with open(LOGO_FILE,'r') as f_open:
     prog_description += f_open.read()
 
 
