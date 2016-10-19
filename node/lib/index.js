@@ -1,7 +1,11 @@
 var openurl = require('openurl');
 var program = require('commander');
 var fs = require('fs');
+var path = require('path');
 var shelljs = require('shelljs/global');
+
+var DRINKME_FILE = path.join(__dirname, '../shared/drinkme.txt');
+var LOGO_FILE = path.join(__dirname, '../shared/tableaulogo.txt');
 
 
 /*
@@ -16,7 +20,7 @@ function openDataDevURL() {
  * Umm, who put this here? 
  */ 
 function drinkMe() {
-    fs.readFile('./drinkme.txt', 'utf8', function(err, data) {
+    fs.readFile(DRINKME_FILE, 'utf8', function(err, data) {
         if (err) throw err;
 
         console.log('\n' + data);
@@ -65,7 +69,7 @@ function cloneRepo(repoURL, repoName, docsURL) {
  * Small blurb that prints when user just runs 'tableau' without any options
  */
 function printHeader() {
-    fs.readFile('./tableaulogo.txt', 'utf8', function(err, data) {
+    fs.readFile(LOGO_FILE, 'utf8', function(err, data) {
         if (err) throw err;
 
         console.log('\n' + data);

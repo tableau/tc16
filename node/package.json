@@ -2,19 +2,17 @@
   "name": "tc16",
   "version": "1.0.2",
   "description": "Make TC16 rad.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Tableau <github@tableau.com>",
   "license": "MIT",
   "preferGlobal": "true",
-  "directories": {
-    "bin": "./bin"
-  },
+  "bin": "./bin/tc16",
   "dependencies": {
     "commander": "^2.9.0",
     "openurl": "^1.1.1",
     "shelljs": "^0.7.4"
+  }, "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "doc": "./shared"
   }
 }
