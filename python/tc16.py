@@ -72,7 +72,7 @@ def main(args=sys.argv[1:]):
     prog_description += "\n"
     prog_description += "tableau is a simple command line interface for downloading Tableau\'s developer " + "\n"
     prog_description += "tools and content. There are also JavaScript tools available via npm: " + "\n"
-    prog_description += "'npm i -g tableau'. More can be found at http://developers.tableau.com."
+    prog_description += "'npm install -g tc16'. More can be found at http://developers.tableau.com."
 
     parser = argparse.ArgumentParser(description=prog_description, formatter_class=argparse.RawTextHelpFormatter)
 

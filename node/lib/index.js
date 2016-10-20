@@ -97,7 +97,7 @@ function printHeader() {
         console.log('\n' + data);
         console.log("tableau is a simple command line interface for downloading Tableau\'s developer ");
         console.log("tools and content. There are also Python tools available via pip: ");
-        console.log("'pip install tableau'. More can be found at http://developers.tableau.com.");
+        console.log("'pip install tc16'. More can be found at http://developers.tableau.com.");
 
         program.outputHelp();        
     });    
