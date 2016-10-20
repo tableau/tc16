@@ -1,11 +1,29 @@
 import argparse
-import webbrowser
-import sys
+import re
 import os
+import os.path
+import sys
+import webbrowser
+
+YESNO_RE = re.compile(r'^\s*(([Yy](es)?)|([Nn]o?))\s*$')
+
+
+def get_confirmation(question):
+    response = raw_input(question).strip()
+    if response == '':
+        return True
+
+    if not YESNO_RE.match(response):
+        print('you must respond with Y or N')
+        return get_confirmation(question)
+
+    return response.lower()[0] == 'y'
+
 
 class TC16Action(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         webbrowser.open_new("http://tabsoft.co/tc16DataDevPIP")
+
 
 class DrinkMeAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -21,9 +39,12 @@ class DrinkMeAction(argparse.Action):
 
         print(msg)
 
+
 class ToolsAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
-        import os
+
+        if not get_confirmation('Are you sure you want to pip install our tools? (Y/n) '):
+            return
 
         SDK_URL = "https://onlinehelp.tableau.com/current/api/sdk/en-us/help.htm"
 
@@ -36,11 +57,12 @@ class DatadevAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         webbrowser.open_new("http://developers.tableau.com")
 
+
 def main(args=sys.argv[1:]):
 
     prog_description = ""
 
-    LOGO_FILE = os.path.dirname(__file__) +  './shared/tableaulogo.txt'
+    LOGO_FILE = os.path.join(os.path.dirname(__file__), './shared/tableaulogo.txt')
 
 
     with open(LOGO_FILE,'r') as f_open:
@@ -55,10 +77,14 @@ def main(args=sys.argv[1:]):
     parser = argparse.ArgumentParser(description=prog_description, formatter_class=argparse.RawTextHelpFormatter)
 
     # define our commands
-    parser.add_argument('-drinkme', nargs=0, action=DrinkMeAction, help='who knows what this does or where it might lead you. don\'t delay.')
-    parser.add_argument('-datadev', nargs=0, action=DatadevAction, help='launches tableau developer documentation in you browser')
-    parser.add_argument('-tc16', nargs=0, action=TC16Action, help='takes you to all developer track content for TC16')
-    parser.add_argument('-tools', nargs=0, action=ToolsAction, help='installs all Tableau tools for Python')
+    parser.add_argument('-D', '--drinkme', nargs=0, action=DrinkMeAction,
+                        help='who knows what this does or where it might lead you. don\'t delay.')
+    parser.add_argument('-d', '--datadev', nargs=0, action=DatadevAction,
+                        help='launches tableau developer documentation in you browser')
+    parser.add_argument('-t', '--tc16', nargs=0, action=TC16Action,
+                        help='takes you to all developer track content for TC16')
+    parser.add_argument('-T', '--tools', nargs=0, action=ToolsAction,
+                        help='installs all Tableau tools for Python')
 
     parser.parse_args(args)
     if len(args) < 1:
