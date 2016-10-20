@@ -84,7 +84,6 @@ function printHeader() {
 // Using npm package commander to parse args and do coercion
 // More info here: https://www.npmjs.com/package/commander
 program
-  .version('1.0.0')
   .usage('[options]')
   .option('-d, --datadev', 'launches tableau developer documentation in you browser', openDataDevURL)
   .option('-D, --drinkme', 'who knows what this does or where it might lead you. don\'t delay', drinkMe)
