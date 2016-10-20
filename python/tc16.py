@@ -36,30 +36,33 @@ class DatadevAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         webbrowser.open_new("http://developers.tableau.com")
 
+def main(args=sys.argv[1:]):
 
-prog_description = ""
+    prog_description = ""
 
-LOGO_FILE = os.path.dirname(__file__) +  './shared/tableaulogo.txt'
-
-
-with open(LOGO_FILE,'r') as f_open:
-    prog_description += f_open.read()
+    LOGO_FILE = os.path.dirname(__file__) +  './shared/tableaulogo.txt'
 
 
-prog_description += "\n"
-prog_description += "tableau is a simple command line interface for downloading Tableau\'s developer " + "\n"
-prog_description += "tools and content. There are also JavaScript tools available via npm: " + "\n"
-prog_description += "'npm i -g tableau'. More can be found at http://developers.tableau.com."
+    with open(LOGO_FILE,'r') as f_open:
+        prog_description += f_open.read()
 
-parser = argparse.ArgumentParser(description=prog_description, formatter_class=argparse.RawTextHelpFormatter)
 
-# define our commands
-parser.add_argument('-drinkme', nargs=0, action=DrinkMeAction, help='who knows what this does or where it might lead you. don\'t delay.')
-parser.add_argument('-datadev', nargs=0, action=DatadevAction, help='launches tableau developer documentation in you browser')
-parser.add_argument('-tc16', nargs=0, action=TC16Action, help='takes you to all developer track content for TC16')
-parser.add_argument('-tools', nargs=0, action=ToolsAction, help='installs all Tableau tools for Python')
+    prog_description += "\n"
+    prog_description += "tableau is a simple command line interface for downloading Tableau\'s developer " + "\n"
+    prog_description += "tools and content. There are also JavaScript tools available via npm: " + "\n"
+    prog_description += "'npm i -g tableau'. More can be found at http://developers.tableau.com."
+
+    parser = argparse.ArgumentParser(description=prog_description, formatter_class=argparse.RawTextHelpFormatter)
+
+    # define our commands
+    parser.add_argument('-drinkme', nargs=0, action=DrinkMeAction, help='who knows what this does or where it might lead you. don\'t delay.')
+    parser.add_argument('-datadev', nargs=0, action=DatadevAction, help='launches tableau developer documentation in you browser')
+    parser.add_argument('-tc16', nargs=0, action=TC16Action, help='takes you to all developer track content for TC16')
+    parser.add_argument('-tools', nargs=0, action=ToolsAction, help='installs all Tableau tools for Python')
+
+    parser.parse_args(args)
+    if len(args) < 1:
+        parser.print_help()
 
 if __name__ == "__main__":
-    args = parser.parse_args()
-    if len(sys.argv[1:]) < 1:
-        parser.print_help()
+    main()

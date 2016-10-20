@@ -8,6 +8,11 @@ setup(
     url='https://github.com/tableau/tc16',
     packages=find_packages(),
     license='MIT',
+    entry_points={
+      'console_scripts': [
+        'tc16 = tc16:main'
+      ]
+    },
     description='Make TC16 rad.',
     data_files=[('shared', ['./shared/drinkme.txt', './shared/tableaulogo.txt'])]
 )
