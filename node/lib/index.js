@@ -3,6 +3,7 @@ var program = require('commander');
 var fs = require('fs');
 var path = require('path');
 var shelljs = require('shelljs/global');
+var prompt = require('prompt');
 
 var DRINKME_FILE = path.join(__dirname, '../shared/drinkme.txt');
 var LOGO_FILE = path.join(__dirname, '../shared/tableaulogo.txt');
@@ -42,13 +43,34 @@ function getJSTools() {
         console.log("Sorry, this script requires git");
         exit(1);
     }
+    var schema = {
+        name: 'response',
+        description: 'Do you want to clone the tools? (y/n)',     // Prompt displayed to the user. 
+        type: 'string',
+        pattern: /^\s*(([yY](es)?)|([nN]o?))\s*$/,                  // Regular expression that input must be valid against. 
+        message: 'Must be y or n', // Warning message to display if validation fails.   
+        default: 'y',             // Default value to use if no value is entered. 
+        required: true 
+    };
 
-    cloneRepo("https://github.com/tableau/webdataconnector",
+    // customize our prompt message
+    prompt.message = '';
+    prompt.delimiter = '';
+    prompt.start();
+    prompt.get(schema, function (err, result) {
+        if (result.response.toLowerCase()[0] != 'y') {
+            return;
+        }
+
+        cloneRepo("https://github.com/tableau/webdataconnector",
               "webdataconnector",
               "http://tableau.github.io/webdataconnector/docs/");
-    cloneRepo("https://github.com/tableau/js-api-examples",
-              "js-api-examples",
-              "https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api.htm");
+        cloneRepo("https://github.com/tableau/js-api-examples",
+                "js-api-examples",
+                "https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api.htm");
+  });
+
+    
 }
 
 /*
