@@ -6,6 +6,11 @@ import os.path
 import sys
 import webbrowser
 
+try:
+  raw_input
+except NameError:
+  raw_input = input
+
 YESNO_RE = re.compile(r'^\s*(([Yy](es)?)|([Nn]o?))\s*$')
 DRINKME_FILE = pkg_resources.resource_filename(__name__, 'shared/drinkme.txt')
 LOGO_FILE = pkg_resources.resource_filename(__name__, 'shared/tableaulogo.txt')
