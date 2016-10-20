@@ -1,4 +1,5 @@
 import argparse
+import pkg_resources
 import re
 import os
 import os.path
@@ -6,7 +7,8 @@ import sys
 import webbrowser
 
 YESNO_RE = re.compile(r'^\s*(([Yy](es)?)|([Nn]o?))\s*$')
-
+DRINKME_FILE = pkg_resources.resource_filename(__name__, 'shared/drinkme.txt')
+LOGO_FILE = pkg_resources.resource_filename(__name__, 'shared/tableaulogo.txt')
 
 def get_confirmation(question):
     response = raw_input(question).strip()
@@ -31,8 +33,6 @@ class DrinkMeAction(argparse.Action):
         # Austin will be UTC - 6h or 1478660400
         # 30.265886, -97.735671
         msg = "\n"
-
-        DRINKME_FILE = os.path.dirname(__file__) +  './shared/drinkme.txt'
 
         with open(DRINKME_FILE, 'r') as f_open:
             msg += f_open.read()
@@ -62,12 +62,8 @@ def main(args=sys.argv[1:]):
 
     prog_description = ""
 
-    LOGO_FILE = os.path.join(os.path.dirname(__file__), './shared/tableaulogo.txt')
-
-
     with open(LOGO_FILE,'r') as f_open:
         prog_description += f_open.read()
-
 
     prog_description += "\n"
     prog_description += "tableau is a simple command line interface for downloading Tableau\'s developer " + "\n"

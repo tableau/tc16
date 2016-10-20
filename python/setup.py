@@ -1,12 +1,12 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='tc16',
-    version='1.0.6',
+    version='1.0.7',
     author='Tableau',
     author_email='github@tableau.com',
     url='https://github.com/tableau/tc16',
-    packages=find_packages(),
+    packages=['tc16'],
     license='MIT',
     entry_points={
       'console_scripts': [
@@ -14,5 +14,7 @@ setup(
       ]
     },
     description='Make TC16 rad.',
-    data_files=[('shared', ['./shared/drinkme.txt', './shared/tableaulogo.txt'])]
+    package_data={
+        'tc16': ['shared/*.txt']
+    }
 )
