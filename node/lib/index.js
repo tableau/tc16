@@ -110,7 +110,7 @@ program
   .option('-d, --datadev', 'launches tableau developer documentation in you browser', openDataDevURL)
   .option('-D, --drinkme', 'who knows what this does or where it might lead you. don\'t delay', drinkMe)
   .option('-t, --tc16', 'takes you to all developer track content for TC16', getTCContent)
-  .option('-T, --tools', 'installs all Tableau tools for JavaScript', getJSTools)
+  .option('-T, --tools', 'clones the repositories for the Web Data Connector SDK and the JavaScript API', getJSTools)
   .parse(process.argv);
 
 // argv has length of 2 when running 'tableau' CLI without any options
