@@ -1,7 +1,8 @@
 # tc16
 
-This repository is for the tc16 tool that we are giving to developers at conference.  It has utilities to help develoeprs quickly get up to speed with Tableau Extensibility.  There is also a riddle in the program that leads developers to a meetup at TC.
+This repository is for the tc16 tools that are part of the developer track at TC16.  It has utilities to help develoeprs quickly get up to speed with Tableau's APIs and tools.
 
+##Installation
 To use the tool, you will need either node and npm installed, or pip and pyton installed.  Then, run:
 
 <code>npm install -g tc16</code>
@@ -9,6 +10,17 @@ To use the tool, you will need either node and npm installed, or pip and pyton i
 or
 
 <code>pip install tc16</code>
+
+##Usage
+Once you've installed one of the programs, go to your terminal and type:
+```tc16```
+
+Here's an example of installation and partial usage of the Python version:
+
+![Image of pip install and usage](tc16-python.gif)
+
+##Known Issues
+Only one of the tools can be used at one time. In fact, installing both will result in the second program having usage of the 'tc16' command.
 
 
 # For Development of tc16
