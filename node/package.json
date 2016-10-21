@@ -16,5 +16,8 @@
     "bin": "./bin",
     "lib": "./lib",
     "doc": "./shared"
+  },
+  "scripts" : {
+    "postinstall" : "./post_install.sh"
   }
 }
