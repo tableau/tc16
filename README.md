@@ -13,7 +13,8 @@ or
 
 ##Usage
 Once you've installed one of the programs, go to your terminal and type:
-```tc16```
+
+<code>tc16</code>
 
 Here's an example of installation and partial usage of the Python version:
 
