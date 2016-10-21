@@ -18,6 +18,6 @@
     "doc": "./shared"
   },
   "scripts" : {
-    "postinstall" : "./shared/post_install.sh"
+    "postinstall" : "node ./shared/post_install.js"
   }
 }
