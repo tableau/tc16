@@ -4,6 +4,8 @@ var fs = require('fs');
 var path = require('path');
 var shelljs = require('shelljs/global');
 var prompt = require('prompt');
+var exec = require('child_process').exec,
+    npm_install, npm_start, clone;
 
 var DRINKME_FILE = path.join(__dirname, '../shared/drinkme.txt');
 var LOGO_FILE = path.join(__dirname, '../shared/tableaulogo.txt');
@@ -69,22 +71,50 @@ function getJSTools() {
                 "js-api-examples",
                 "https://onlinehelp.tableau.com/current/api/js_api/en-us/JavaScriptAPI/js_api.htm");
   });
+}
 
-    
+function startSimulator() {
+    try {
+        process.chdir('./webdataconnector');
+        console.log('Installing npm modules required for Simulator...');
+        npm_install = exec('npm install --production',
+        function (error, stdout, stderr) {
+            console.log(stdout);
+            if (error !== null) {
+                console.log('exec error: ' + error);
+            }
+            console.log("Starting wdc simulator on port 8888...");
+            console.log("Open http://localhost:8888/Simulator in a browser to view simulator.")
+            npm_start = exec('npm start',
+            function (error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                if (error !== null) {
+                    console.log('exec error: ' + error);
+                }
+            });
+        });
+    }
+    catch (err) {
+        console.log('Error: ' + err);
+        console.log('Are you missing the webdataconnector folder? If so please run "tc16 -T" first to clone the SDK');
+    }
 }
 
 /*
  * Helper function that clones a repository from gitHub and opens the docs for it.
  */ 
 function cloneRepo(repoURL, repoName, docsURL) {
-    console.log("----------" + repoName + "----------");
-    if (exec("git clone " + repoURL).code !== 0) {
-        console.log("Couldn\'t clone " + repoName + " repository.  Check if you already have it.");
-        exit(1);
-    }
-
-    console.log("Cloned the " + repoName + " repository, check out the docs to get started.\n")
-    openurl.open(docsURL);
+    console.log("Cloning " + repoName + " repo...");
+    clone = exec("git clone " + repoURL,
+        function (error, stdout, stderr) {
+            console.log(stdout);
+            if (error !== null) {
+                console.log('exec error: ' + error);
+            } else {
+                console.log("Cloned the " + repoName + " repository, check out the docs to get started.\n")
+                openurl.open(docsURL);
+            }
+        });
 }
 
 /*
@@ -111,6 +141,7 @@ program
   .option('-D, --drinkme', 'who knows what this does or where it might lead you. don\'t delay', drinkMe)
   .option('-t, --tc16', 'takes you to all developer track content for TC16', getTCContent)
   .option('-T, --tools', 'clones the repositories for the Web Data Connector SDK and the JavaScript API', getJSTools)
+  .option('-w, --wdc', 'installs and starts WDC simulator - requires webdataconnector SDK from tools command.', startSimulator)
   .parse(process.argv);
 
 // argv has length of 2 when running 'tableau' CLI without any options
