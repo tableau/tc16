@@ -1,6 +1,6 @@
 # tc16
 
-This repository is for the tc16 tools that are part of the developer track at TC16.  It has utilities to help develoeprs quickly get up to speed with Tableau's APIs and tools.
+This repository is for the tc16 tools that are part of the developer track at TC16.  It has utilities to help developers quickly get up to speed with Tableau's APIs and tools.
 
 ##Installation
 To use the tool, you will need either node and npm installed, or pip and pyton installed.  Then, run:
