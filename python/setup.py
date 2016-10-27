@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='tc16',
-    version='1.0.9',
+    version='1.0.10',
     author='Tableau',
     author_email='github@tableau.com',
     url='https://github.com/tableau/tc16',
