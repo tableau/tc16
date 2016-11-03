@@ -79,9 +79,9 @@ def main(args=sys.argv[1:]):
 
     # define our commands
     parser.add_argument('-D', '--drinkme', nargs=0, action=DrinkMeAction,
-                        help='who knows what this does or where it might lead you. don\'t delay.')
+                        help='who knows what this does or where it might lead you, don\'t delay')
     parser.add_argument('-d', '--datadev', nargs=0, action=DatadevAction,
-                        help='launches tableau developer documentation in you browser')
+                        help='launches tableau developer documentation in your browser')
     parser.add_argument('-t', '--tc16', nargs=0, action=TC16Action,
                         help='takes you to all developer track content for TC16')
     parser.add_argument('-T', '--tools', nargs=0, action=ToolsAction,

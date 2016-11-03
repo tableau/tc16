@@ -137,8 +137,8 @@ function printHeader() {
 // More info here: https://www.npmjs.com/package/commander
 program
   .usage('[options]')
-  .option('-d, --datadev', 'launches tableau developer documentation in you browser', openDataDevURL)
-  .option('-D, --drinkme', 'who knows what this does or where it might lead you. don\'t delay', drinkMe)
+  .option('-d, --datadev', 'launches tableau developer documentation in your browser', openDataDevURL)
+  .option('-D, --drinkme', 'who knows what this does or where it might lead you, don\'t delay', drinkMe)
   .option('-t, --tc16', 'takes you to all developer track content for TC16', getTCContent)
   .option('-T, --tools', 'clones the repositories for the Web Data Connector SDK and the JavaScript API', getJSTools)
   .option('-w, --wdc', 'installs and starts WDC simulator - requires webdataconnector SDK from tools command.', startSimulator)
