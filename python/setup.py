@@ -1,20 +1,20 @@
 from setuptools import setup
 
 setup(
-    name='tc16',
+    name='datadev',
     version='1.0.12',
     author='Tableau',
     author_email='github@tableau.com',
-    url='https://github.com/tableau/tc16',
-    packages=['tc16'],
+    url='https://github.com/tableau/datadev',
+    packages=['datadev'],
     license='MIT',
     entry_points={
       'console_scripts': [
-        'tc16 = tc16:main'
+        'datadev = datadev:main'
       ]
     },
-    description='Make TC16 rad.',
+    description='Make Datadev rad.',
     package_data={
-        'tc16': ['shared/*.txt']
+        'datadev': ['shared/*.txt']
     }
 )

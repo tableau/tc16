@@ -71,9 +71,9 @@ def main(args=sys.argv[1:]):
         prog_description += f_open.read()
 
     prog_description += "\n"
-    prog_description += "tc16 is a simple command line interface for downloading Tableau\'s developer " + "\n"
+    prog_description += "datadev is a simple command line interface for downloading Tableau\'s developer " + "\n"
     prog_description += "tools and content. There are also JavaScript tools available via npm: " + "\n"
-    prog_description += "'npm install -g tc16'. More can be found at http://developers.tableau.com."
+    prog_description += "'npm install -g datadev'. More can be found at http://developers.tableau.com."
 
     parser = argparse.ArgumentParser(description=prog_description, formatter_class=argparse.RawTextHelpFormatter)
 
@@ -82,7 +82,7 @@ def main(args=sys.argv[1:]):
                         help='who knows what this does or where it might lead you, don\'t delay')
     parser.add_argument('-d', '--datadev', nargs=0, action=DatadevAction,
                         help='launches tableau developer documentation in your browser')
-    parser.add_argument('-t', '--tc16', nargs=0, action=TC16Action,
+    parser.add_argument('-t', '--datadev', nargs=0, action=TC16Action,
                         help='takes you to all developer track content for TC16')
     parser.add_argument('-T', '--tools', nargs=0, action=ToolsAction,
                         help='installs all Tableau tools for Python')
