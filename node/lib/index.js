@@ -96,7 +96,7 @@ function startSimulator() {
     }
     catch (err) {
         console.log('Error: ' + err);
-        console.log('Are you missing the webdataconnector folder? If so please run "tc16 -T" first to clone the SDK');
+        console.log('Are you missing the webdataconnector folder? If so please run "datadev -T" first to clone the SDK');
     }
 }
 
@@ -125,9 +125,9 @@ function printHeader() {
         if (err) throw err;
 
         console.log('\n' + data);
-        console.log("tc16 is a simple command line interface for downloading Tableau\'s developer ");
+        console.log("datadev is a simple command line interface for downloading Tableau\'s developer ");
         console.log("tools and content. There are also Python tools available via pip: ");
-        console.log("'pip install tc16'. More can be found at http://developers.tableau.com.");
+        console.log("'pip install datadev'. More can be found at http://developers.tableau.com.");
 
         program.outputHelp();        
     });    
@@ -139,7 +139,7 @@ program
   .usage('[options]')
   .option('-d, --datadev', 'launches tableau developer documentation in your browser', openDataDevURL)
   .option('-D, --drinkme', 'who knows what this does or where it might lead you, don\'t delay', drinkMe)
-  .option('-t, --tc16', 'takes you to all developer track content for TC16', getTCContent)
+  .option('-t, --datadev', 'takes you to all developer track content for TC16', getTCContent)
   .option('-T, --tools', 'clones the repositories for the Web Data Connector SDK and the JavaScript API', getJSTools)
   .option('-w, --wdc', 'installs and starts WDC simulator - requires webdataconnector SDK from tools command.', startSimulator)
   .parse(process.argv);

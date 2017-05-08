@@ -1,11 +1,11 @@
 {
-  "name": "tc16",
+  "name": "datadev",
   "version": "1.0.11",
-  "description": "Make TC16 rad.",
+  "description": "Make Datadev rad.",
   "author": "Tableau <github@tableau.com>",
   "license": "MIT",
   "preferGlobal": "true",
-  "bin": "./bin/tc16",
+  "bin": "./bin/datadev",
   "dependencies": {
     "commander": "^2.9.0",
     "openurl": "^1.1.1",
