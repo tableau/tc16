@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>#DataDev CLI</title>
+    <meta name="author" content="Tableau"/>
+    <meta name="Description" content="Command line interface (CLI) for Tableau developer community."/>
+    <script src="./js/jquery-1.7.1.min.js"></script>
+    <script src="./js/jquery.terminal.min.js"></script>
+    <link href="./css/jquery.terminal.css" rel="stylesheet"/>
+  </head>
+<body>
+
+<script>
+    $(document).ready(function($) {
+        function tableauLogo() {
+            var logo = "";
+            logo += "          _|_          \n";
+            logo += "     #     |     #     \n";
+            logo += "   #####       #####   \n";
+            logo += "     #     #     #           _             _       _                        \n";
+            logo += "_|_        #        _|_     | |_    __ _  | |__   | |   ___    __ _   _   _ \n";
+            logo += " |      #######      |      | __|  / _` | | '_ \\  | |  / _ \\  / _` | | | | |\n";
+            logo += "           #                | |_  | (_| | | |_ |  | | |  __/ | (_| | | |_| |\n";
+            logo += "     #     #     #           \\__|  \\__,_| |_.__/  |_|  \\___|  \\__,_|  \\__,_|\n";
+            logo += "   #####       #####   \n";
+            logo += "     #    _|_    #     \n";
+            logo += "           |           \n";
+            logo += "\n";
+            return logo;
+
+        }
+
+        function welcomeMessage() {
+            var msg = "";
+            msg += "Welcome to the #DataDev browser CLI.\n";
+            msg += "This is a simple CLI for engaging with Tableau's dev tools and content.\n";
+            msg += "This tool is also available via npm and pip (datadev).\n\n";
+            msg += "Use help to see available commands.\n\n";
+            return msg;
+
+        }
+
+        function helpMessage() {
+            var helpText = "\n";
+            helpText += "Available commands are:\n\n";
+            helpText += "datadev   launches the Tableau developer portal.\n";
+            helpText += "drinkme   who knows where this might lead. don't delay.\n";
+            helpText += "tc17      takes you to all developer track content for TC17.\n";
+            helpText += "clear     clears terminal.\n";
+            helpText += "help      displays this message.\n";
+            return helpText;
+        }
+
+        $('body').terminal(function(command, term) {
+            if (command == 'help') {
+                term.echo(helpMessage);
+            } else if (command == 'datadev') {
+                term.echo("you typed datadev\n");
+                // TODO -> open a new window at http://developers.tableau.com
+
+            } else if (command == 'drinkme') {
+                term.echo("you typed drinkme\n");
+                // TODO -> something for Clue Keeper
+
+            } else if (command == 'tc17') {
+                term.echo("you typed tc17\n");
+                // TODO -> open a new window at http://tabsoft.co/<URLFORTC17>
+
+            } else if (command == 'clear') {
+                term.clear();
+
+            } else {
+                term.echo("unknown command " + command + "\n");
+            }
+        }, {
+            greetings: '',
+            onBlur: function() {
+                // prevent loosing focus
+                return false;
+            },
+            onClear: function() {
+                this.echo(tableauLogo(), {finalize: function(div) {
+                    div.css("color", "orange");
+                }});
+                this.echo(welcomeMessage());
+            },
+            onInit: function() {
+                this.echo(tableauLogo(), {finalize: function(div) {
+                    div.css("color", "orange");
+                }});
+                this.echo(welcomeMessage());
+            }
+        });
+    });
+
+</script>
+</body>
