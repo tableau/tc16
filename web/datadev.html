@@ -13,6 +13,9 @@
 
 <script>
     $(document).ready(function($) {
+        var devPortalURL = 'http://developers.tableau.com';
+        var tc17ContentURL = '';            // TODO
+
         function tableauLogo() {
             var logo = "";
             logo += "          _|_          \n";
@@ -56,16 +59,15 @@
             if (command == 'help') {
                 term.echo(helpMessage);
             } else if (command == 'datadev') {
-                term.echo("you typed datadev\n");
-                // TODO -> open a new window at http://developers.tableau.com
+                term.echo("Launching developer portal in a new window...\n");
+                window.open(devPortalURL);
 
             } else if (command == 'drinkme') {
-                term.echo("you typed drinkme\n");
-                // TODO -> something for Clue Keeper
+                term.echo("TODO: you typed drinkme\n");  // TODO -> something for Clue Keeper
 
             } else if (command == 'tc17') {
-                term.echo("you typed tc17\n");
-                // TODO -> open a new window at http://tabsoft.co/<URLFORTC17>
+                term.echo("Opening TC17 developer track content folder...\n");
+                window.open(tc17ContentURL);
 
             } else if (command == 'clear') {
                 term.clear();
@@ -76,7 +78,7 @@
         }, {
             greetings: '',
             onBlur: function() {
-                // prevent loosing focus
+                // prevent losing focus
                 return false;
             },
             onClear: function() {
