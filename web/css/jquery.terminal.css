@@ -104,7 +104,7 @@
     float: left;
 }
 .terminal, .cmd {
-    font-family: Courier New, Courier, monospace;
+    font-family: monospace;
     /*font-family: FreeMono, monospace; this don't work on Android */
     color: #aaa;
     background-color: #000;
@@ -251,7 +251,7 @@
     position: absolute;
     left: 0;
     top: -100%;
-    width: 800px;
+    width: 1000px;
     height: 100%;
     margin: 1px 0 0;
     border: none;
@@ -398,8 +398,8 @@
         background-color: var(--background, #000);
     }
     .terminal, .cmd, .terminal .terminal-output div div, .cmd .prompt {
-        font-size: calc(var(--size, 1) * 16px);
-        line-height: calc(var(--size, 1) * 18px);
+        font-size: calc(var(--size, 1) * 14px);
+        line-height: calc(var(--size, 1) * 16px);
     }
     .terminal .inverted, .cmd .inverted {
         background-color: var(--color, #aaa);
